@@ -19,7 +19,8 @@ Aquest document detalla la missatgeria associada al servei de consulta d&#39;inf
 
 Per poder realitzar la integració cal conèixer prèviament la següent documentació:
 
-- Document de Missatgeria Genèrica de la PCI del Consorci AOC.
+- [Document de Missatgeria Genèrica de la PCI del Consorci AOC.](https://github.com/ConsorciAOC/PCI/blob/main/Missatgeria/README.md)
+
 
 # 2 Transmissions de dades disponibles
 
