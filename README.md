@@ -1,10 +1,6 @@
-# VO-IGAE
+# VO - Intervención General de la Administración del Estado (IGAE)
 
-![](RackMultipart20211104-4-kjvumr_html_f82d96c26cc03594.png)
-
-# **Via Oberta – Intervención General de la Administración del Estado**
-
-# **Document d&#39;integració del servei**
+## **Document d&#39;integració del servei**
 
  
 Realitzat per: Àrea de Tecnologia – Unitat de Projectes
