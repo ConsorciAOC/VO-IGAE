@@ -12,8 +12,26 @@ Realitzat per: Àrea de Tecnologia – Unitat de Projectes
 | --- | --- | --- | --- |
 | V1.0 | 01/09/2021 | Roger Noguera i Arnau | Creació del document |
 
+- [1. Introducció](#1)
+- [2. Transmissions de dades disponibles](#2)
+- [3. Missatgeria del servei](#3)
+   * [3.1 Consulta d&#39;inhabilitacions (IGAE\_INHABILITACIONS)](#3.1)
+        * [3.1.1 Petició – dades genèriques](#3.1.1)
+		* [3.1.2 Petició – dades específiques](#3.1.2)
+		* [3.1.3 Resposta – dades específiques](#3.1.3)		
+   * [3.2 Consulta de subvencions MINIMIS (IGAE\_MINIMIS)](#3.2)
+        * [3.2.1 Petició – dades genèriques](#3.2.1)
+		* [3.2.2 Petició – dades específiques](#3.2.2)
+		* [3.2.3 Resposta – dades específiques](#3.2.3)
+   * [3.3 Consulta de concessions (IGAE\_CONCESSIONS)](#3.3)
+		* [3.3.1 Petició – dades genèriques](#3.3.1)
+		* [3.3.2 Petició – dades específiques](#3.3.2)
+		* [3.3.3 Resposta – dades específiques](#3.3.2)
+- [4. Joc de proves](#4)
+   
 
-# 1 Introducció
+
+# 1 Introducció <a name="1"></a>
 
 Aquest document detalla la missatgeria associada al servei de consulta d&#39;informació de la Intervención General de la Administración del Estado.
 
@@ -22,7 +40,7 @@ Per poder realitzar la integració cal conèixer prèviament la següent documen
 - [Document de Missatgeria Genèrica de la PCI del Consorci AOC.](https://github.com/ConsorciAOC/PCI/blob/main/Missatgeria/README.md)
 
 
-# 2 Transmissions de dades disponibles
+# 2 Transmissions de dades disponibles <a name="2"></a>
 
 Les dades disponibles a través del servei són les que es presenten a continuació:
 
@@ -38,7 +56,7 @@ Les dades disponibles a través del servei són les que es presenten a continuac
 
 Les modalitats disposen de versió imprimible del resultat de la consulta en format PDF. Per més detalls adreceu-vos a l&#39;apartat _Extensions de missatgeria_ del [document de missatgeria genèrica.](https://github.com/ConsorciAOC/PCI/blob/main/Missatgeria/README.md)
 
-# 3 Missatgeria dels serveis
+# 3 Missatgeria del servei <a name="3"></a>
 
 A continuació es detalla la missatgeria corresponent al bloc de dades específiques de les modalitats de consum del producte.
 
@@ -53,18 +71,18 @@ A continuació es detalla la missatgeria corresponent al bloc de dades específi
 //SolicitudTransmision/DatosGenericos/Solicitante/Funcionario/NifFuncionario 
 ```
 
-## 3.1 Consulta d&#39;inhabilitacions (IGAE\_INHABILITACIONS)
+## 3.1 Consulta d&#39;inhabilitacions (IGAE\_INHABILITACIONS) <a name="3.1"></a>
 
 El servei de consulta de dades de inhabilitacions permet consultar si hi ha una inhabilitació per percebre subvencions o ajudes del ciutadà objecte de la consulta, ja sigui per imposició de sentència judicial ferma o per sanció administrativa en els supòsits previstos en les lleis.
 
-### 3.1.1 Petició – dades genèriques
+### 3.1.1 Petició – dades genèriques <a name="3.1.1"></a>
 
 | _Element_ | _Descripció_ |
 | --- | --- |
 | //DatosGenericos/Titular/TipoDocumentacion | Tipus de documentació (DNI, NIE, Pasaporte). Si la consulta es fa per un document estranger diferent al passaport, indiqueu DNI i idEstranger a les dades específiques. |
 | //DatosGenericos/Titular/Documentacion | Documentació. |
 
-### 3.1.2 Petició – dades específiques
+### 3.1.2 Petició – dades específiques <a name="3.1.2"></a>
 
 ![1](captures/1.png)
 
@@ -75,7 +93,7 @@ El servei de consulta de dades de inhabilitacions permet consultar si hi ha una 
 | peticioConsultaInhabilitacions/dataInici | Data d&#39;inici per limitar la cerca del període d&#39;inhabilitació (format *AAAA-MM-DD*). Si s&#39;informa aquest element, cal informar *dataFi*. |
 | peticioConsultaInhabilitacions/dataFi | Data de fi per limitar la cerca del període d&#39;inhabilitació (format *AAAA-MM-DD*). |
 
-### 3.1.3 Resposta – dades específiques
+### 3.1.3 Resposta – dades específiques <a name="3.1.3"></a>
 
 ![2](captures/2.png)
 
@@ -95,18 +113,18 @@ El servei de consulta de dades de inhabilitacions permet consultar si hi ha una 
 | respostaConsultaInhabilitacions/resultat/codiResultat | Codi de resultat de la consulta:<li> 2000 - No existeix informació enregistrada a la BDNS per a la identificació aportada. <li> 2001 - No consta inhabilitació judicial o administrativa a data d&#39;avui.<li> 2002 - No consta inhabilitació judicial o administrativa vigent entre el rang de dates indicat.<li> 2003 - Informació d&#39;inhabilitacions trobada.<li> 2005, 2006 - Error en el rang de dates.<li>0502 - Error realitzant la consulta.|
 | respostaConsultaInhabilitacions/resultat/descripcio | Descripció del resultat. |
 
-## 3.2 Consulta de subvencions MINIMIS (IGAE\_MINIMIS)
+## 3.2 Consulta de subvencions MINIMIS (IGAE\_MINIMIS) <a name="3.2"></a>
 
 El servei de consulta de dades de subvencions MINIMIS permet accedir a les subvencions que compleixen la regla MINIMIS del titular objecte de la consulta i obtenir la suma de tots els imports de les mateixes.
 
-### 3.2.1 Petició – dades genèriques
+### 3.2.1 Petició – dades genèriques <a name="3.2.1"></a>
 
 | _Element_ | _Descripció_ |
 | --- | --- |
 | //DatosGenericos/Titular/TipoDocumentacion | Tipus de documentació (DNI, NIE, Pasaporte). Si la consulta es fa per un document estranger diferent al passaport, indiqueu DNI i idEstranger a les dades específiques. |
 | //DatosGenericos/Titular/Documentacion | Documentació. |
 
-### 3.2.2 Petició – dades específiques
+### 3.2.2 Petició – dades específiques <a name="3.2.2"></a>
 
 ![3](captures/3.png)
 
@@ -117,7 +135,7 @@ El servei de consulta de dades de subvencions MINIMIS permet accedir a les subve
 | peticioConsultaSubvencionsMinimis /dataInici | Data d&#39;inici per limitar la cerca de concessions de subvencions MINIMIS (format *AAAA-MM-DD*). Si s&#39;informa aquest element, cal informar dataFi. Si no s&#39;informa el sistema contempla tres anys des de la data actual. |
 | peticioConsultaSubvencionsMinimis /dataFi | Data de fi per limitar la cerca de concessions de subvencions MINIMIS (format *AAAA-MM-DD*). |
 
-### 3.2.3 Resposta – dades específiques
+### 3.2.3 Resposta – dades específiques <a name="3.2.3"></a>
 
 ![4](captures/4.png)
 
@@ -133,18 +151,18 @@ El servei de consulta de dades de subvencions MINIMIS permet accedir a les subve
 | respostaConsultaInhabilitacions/resultat/codiResultat | Codi de resultat de la consulta: <li> 2000 - No existeix informació enregistrada a la BDNS per a la identificació aportada.<li> 2201 - No consten en la BDNS concessions de subvencions afectades per la regla de MINIMIS entre el rang de dates indicat.<li> 2202 – Concessions de subvencions trobades.<li> 2006, 2103, 2303 - Error en el rang de dates.<li> 0502 - Error realitzant la consulta. |
 | respostaConsultaInhabilitacions/resultat/descripcio | Descripció del resultat. |
 
-## 3.3 Consulta de concessions (IGAE\_CONCESSIONS)
+## 3.3 Consulta de concessions (IGAE\_CONCESSIONS) <a name="3.3"></a>
 
 El servei de consulta de concessions de subvencions i ajudes públiques permet obtenir informació de les concessions atorgades a un beneficiari en un període tot indicant l&#39;òrgan que la concedeix, convocatòria així com els imports concedits, pagats i, si escau, reintegrats.
 
-### 3.3.1 Petició – dades genèriques
+### 3.3.1 Petició – dades genèriques <a name="3.3.1"></a>
 
 | _Element_ | _Descripció_ |
 | --- | --- |
 | //DatosGenericos/Titular/TipoDocumentacion | Tipus de documentació (DNI, NIE, Pasaporte). Si la consulta es fa per un document estranger diferent al passaport, indiqueu DNI i idEstranger a les dades específiques. |
 | //DatosGenericos/Titular/Documentacion | Documentació. |
 
-### 3.3.2 Petició – dades específiques
+### 3.3.2 Petició – dades específiques <a name="3.3.2"></a>
 
 ![5](captures/5.png)
 
@@ -155,7 +173,7 @@ El servei de consulta de concessions de subvencions i ajudes públiques permet o
 | peticioConsultaConcessions/dataInici | Data d&#39;inici per limitar la cerca de concessions de subvencions i ajudes (format *AAAA-MM-DD*). Si s&#39;informa aquest element, cal informar dataFi. Si no s&#39;informa el sistema contempla cinc anys des de la data actual. |
 | peticioConsultaConcessions/dataFi | Data de fi per limitar la cerca de concessions de subvencions i ajudes (format *AAAA-MM-DD*). |
 
-### 3.3.3 Resposta – dades específiques
+### 3.3.3 Resposta – dades específiques <a name="3.3.3"></a>
 
 | _Element_ | _Descripció_ |
 | --- | --- |
@@ -180,3 +198,14 @@ El servei de consulta de concessions de subvencions i ajudes públiques permet o
 | respostaConsultaConcessions/resultat/descripcio | Descripció del resultat. |
 
 ![6](captures/6.png)
+
+# 4 Joc de proves <a name="4"></a>
+
+L&#39;emissor final publica els següent [joc de proves a l&#39;entorn de pre-producció][proves] 
+
+[proves]: https://administracionelectronica.gob.es/ctt/svd/descargas#.WON5AG_yipo
+
+![image](https://user-images.githubusercontent.com/32306731/137281698-9dfc2044-94f7-487f-a7d6-9a4e0707feb3.png) En cas de tindre problemes per accedir als jocs de proves, si us plau, obre un tiquet a través del [formulari][form]
+
+[form]:https://www.aoc.cat/portal-suport/peticio-integradors/idservei/integracio/
+
